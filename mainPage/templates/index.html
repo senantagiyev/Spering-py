@@ -1,0 +1,304 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <style>
+    a{
+      color: #fff!important;
+    }
+  </style>
+
+  {% include 'partials/head-css.html' %}
+  <title>Spering</title>
+
+  <!-- bootstrap core css -->
+
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    {% include 'partials/header.html' %}
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section">
+      <div class="carousel_btn-container">
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="sr-only">Next</span>
+          </a>
+      </div>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          
+          <div class="carousel-inner">
+              {% for slider in sliders %}
+                  <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                      <div class="container-fluid">
+                          <div class="row">
+                              <div class="col-md-5 offset-md-1">
+                                  <div class="detail-box">
+                                      <h1>
+                                          {{ slider.title|safe }} <br>
+                                  
+                                      </h1>
+                                      <p>
+                                        {{ slider.text|safe }}
+                                      </p>
+                                      <div class="btn-box">
+                                          <a href="#about" class="btn-1">
+                                              About Us
+                                          </a>
+                                          <a href="#newsletter" class="btn-2">
+                                              Get A Quote
+                                          </a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="offset-md-1 col-md-4 img-container">
+                                  <div class="img-box">
+                                      <img src="{{ slider.image.url }}" alt="{{ slider.title }}">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              {% endfor %}
+          </div>
+      </div>
+  </section>
+  
+    <!-- end slider section -->
+  </div>
+
+  
+
+  <!-- experience section -->
+
+  <section class="experience_section layout_padding">
+    <div class="container">
+      {% for experience in experiences %}
+
+      <div class="row">
+
+          <div class="col-md-5">
+              <div class="img-box">
+                  <img src="{{ experience.image.url}}" alt="">
+              </div>
+          </div>
+          <div class="col-md-7">
+              <div class="detail-box">
+                  <div class="heading_container">
+                      <h2>
+                        {{ experience.title }}  
+
+                      </h2>
+                  </div>
+                      <p>
+                          {{ experience.text }}  
+                      </p>
+                      <div class="btn-box">
+                          <a href="{% url 'about' %}" class="btn-1">
+                              Read More
+                          </a>
+                          <a href="#" class="btn-2">
+                              Hire
+                          </a>
+                      </div>
+              </div>
+          </div>
+      </div>
+
+      {% endfor %}
+
+  </div>
+  
+  </section>
+
+  <!-- end experience section -->
+
+  <!-- category section -->
+
+<!-- templates/category_list.html -->
+<section class="category_section layout_padding">
+  <div class="container">
+      <div class="heading_container">
+          <h2>
+              Category
+          </h2>
+      </div>
+      <div class="category_container">
+          {% for category in categories %}
+          <div class="box">
+              <div class="img-box">
+                  <img src="{{ category.image.url }}" alt="{{ category.name }}">
+              </div>
+              <div class="detail-box">
+                  <h5>
+                      <a href="{% url 'category_detail' category.pk %}">{{ category.name }}</a>
+                  </h5>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+</section>
+
+
+
+  <!-- end category section -->
+
+  <!-- about section -->
+
+  <section  class="about_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-lg-9 mx-auto">
+          <div  id="about" class="img-box">
+            <img src="{%static '/images/about-img.jpg'%}" alt="">
+          </div>
+        </div>
+      </div>
+     {% for text in about %}
+     <div class="detail-box">
+      <h2>
+        About Spering Company
+      </h2>
+      <p>
+        {{ text.description}}
+      </p>
+      <a href="">
+        Read More
+      </a>
+    </div>
+     {% endfor %}
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- freelance section -->
+
+  <section class="freelance_section ">
+    <div id="accordion">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-5 offset-md-1">
+            <div class="detail-box">
+              <div class="heading_container">
+                <h2>
+                  Work Freelaner Has Done
+                </h2>
+              </div>
+              <div class="tab_container">
+                <div class="t-link-box" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <div class="img-box">
+                    <img src="{%static '/images/f1.png'%}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      $250 Million
+                    </h5>
+                    <h3>
+                      Paid to Freelancers
+                    </h3>
+                  </div>
+                </div>
+                <div class="t-link-box collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <div class="img-box">
+                    <img src="{%static '/images/f2.png'%}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      2 Million
+                    </h5>
+                    <h3>
+                      Paid Invoices
+                    </h3>
+                  </div>
+                </div>
+                <div class="t-link-box collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <div class="img-box">
+                    <img src="{%static '/images/f3.png'%}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      700,000
+                    </h5>
+                    <h3>
+                      Worldwide Freelancer
+                    </h3>
+                  </div>
+                </div>
+                <div class="t-link-box collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <div class="img-box">
+                    <img src="{%static '/images/f4.png'%}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      98%
+                    </h5>
+                    <h3>
+                      Customer <br>
+                      Satisfaction Rate
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="collapse show" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="img-box">
+                <img src="{%static '/images/freelance-img.jpg'%}" alt="">
+              </div>
+            </div>
+            <div class="collapse" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="img-box">
+                <img src="{%static '/images/freelance-img.jpg'%}" alt="">
+              </div>
+            </div>
+            <div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="img-box">
+                <img src="{%static '/images/freelance-img.jpg'%}" alt="">
+              </div>
+            </div>
+            <div class="collapse" id="collapseFour" aria-labelledby="headingfour" data-parent="#accordion">
+              <div class="img-box">
+                <img src="{%static '/images/freelance-img.jpg'%}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end freelance section -->
+
+
+  <!-- info section -->
+
+  {% include 'partials/footer.html' %}
+  <!-- end info section -->
+
+
+  {% include 'partials/footer-js.html' %}
+
+
+</body>
+</body>
+
+</html>

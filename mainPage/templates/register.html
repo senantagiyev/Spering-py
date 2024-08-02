@@ -1,0 +1,45 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{% static '/css/style.css' %}" rel="stylesheet" />
+<!-- responsive style -->
+<link href="{% static '/css/responsive.css' %}" rel="stylesheet" />
+    <title>LOGIN</title>
+</head>
+<body>
+
+    <div class="container">
+        <div>
+            REGISTER
+        </div>
+        <div class="row">
+          
+            <br>
+            <form action="{% url 'registerRequest' %}" method="POST">
+                {%  csrf_token %}
+
+                <input class="form-control" type="text" name="first_name" placeholder="name">
+                <input class="form-control" type="text" name="last_name" placeholder="surname">
+                 <input class="form-control" type="text" name="email" placeholder="email">
+                 <input class="form-control" type="text" name="username" placeholder="username">
+                 <input class="form-control" type="password" name="password" placeholder="password">
+
+                <button class="form-control btn btn-primary">REGISTER</button>
+            </form>
+        </div>
+    </div>
+
+    
+</body>
+</html>
